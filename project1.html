@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        /* font-family: 'Nunito', sans-serif; */
+        font-family: 'Open Sans', sans-serif;
+        box-sizing: border-box;
+    }
+
+    .container {
+        /* background-image: url(https://static.vecteezy.com/system/resources/previews/003/559/330/original/abstract-background-with-gradient-blue-bubble-free-vector.jpg); */
+        background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20210706/pngtree-vector-illustration-of-natural-green-abstract-background-free-graphics-pngtree-image_738102.jpg);
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
+
+
+    }
+
+
+
+    input.input {
+
+        color: black;
+        /* font-size: 90px; */
+        margin-top: 150px;
+        margin-left: 450px;
+        padding-right: 200px;
+        padding-left: 10px ;
+        /* padding-left: 100px; */
+        height: 40px;
+        width: 400px;
+        /* text-align: center; */
+
+        background: linear-gradient(45deg, #eaefee 0%, #84ef32 100%) transparent;
+        border-radius: 20px;
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        word-spacing: 1.5px;
+        filter: drop-shadow(0 0 3px #579bfa) drop-shadow(0 0 9px #4faef7);
+        animation: animate 8s linear forwards;
+    }
+
+    .button {
+        border-radius: 4px;
+        width: 60px;
+        height: 35px;
+        margin-left: 40px;
+        color: rgb(10, 7, 7);
+        background: rgb(23, 227, 231);
+        font-size: 16px;
+        border-radius: 10px;
+        font-size: 20px;
+
+    }
+
+    h1.heading {
+        /* margin-top: 20px; */
+        padding-top: 100px;
+        text-align: center;
+        font-size: 40px;
+        color: rgb(0, 200, 255);
+
+    }
+    li{
+text-align: center;
+font-size: 20px;
+/* overflow: hidden; */
+    }
+
+    ul button{
+        width: 30px;
+    font-size: 20px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 10px;
+    /* background: linear-gradient(rgb(126, 236, 244) orange white); */
+    background-color: #f879d6;
+/* border: transparent; */
+    /* filter: drop-shadow(0 0 3px #6bf87b) drop-shadow(0 0 9px #7889f6); */
+
+
+}
+
+
+</style>
+
+<body>
+    <div class="container">
+        <h1 class="heading" style="text-align: center; cursor: pointer;">TODO LIST</h1>
+
+
+<div class="input-box">
+        <input class="input" type="text" placeholder="Enter your task here"></input>
+
+        <button class="button">+</button>
+        <ul id="my_task">
+
+
+        </ul>
+    </div>
+    </div>
+    <script>
+        // const my_list = document.querySelector('ul') //selected our existing list
+
+
+        // const my_button = document.querySelector('button')
+
+        // my_button.style.backgroundColor = 'gold'
+
+        // my_button.addEventListener('mouseover',()=>{
+        //     my_button.style.backgroundColor = "lightblue"
+        // })
+        // my_button.addEventListener('mouseout',()=>{
+        //     my_button.style.backgroundColor = "red"
+        // })
+        // // my_button.addEventListener('mousedown',()=>{
+        //     my_button.innerHTML = "mouse is pressed"
+        // })
+        // my_button.addEventListener('mouseup',()=>{
+        //     my_button.innerHTML = "mouse released"
+        // })
+        // my_button.addEventListener('click',()=>{
+        //     console.log("hello");
+        // })
+
+        // const my_h1 = document.querySelector("h1")
+        // my_h1.addEventListener("mouseover",()=>{
+        //     my_h1.style.color = 'red'
+        // })
+
+        // my_h1.addEventListener('mouseout',()=>{
+        //     my_h1.style.color = 'pink'
+        // })
+
+
+
+
+
+        // my_button.addEventListener('click',()=>{
+        //     // console.log("hello world " + (count++));
+
+        //     const my_list_element = document.createElement('li') //created a new list_element
+
+        //     const text = document.createTextNode("Task "+ (count++)) //created a text node
+        //     my_list_element.append(text) //added text node to list_element
+
+        //     my_list.appendChild(my_list_element)
+
+        // })
+
+        const my_heading = document.querySelector('h1');
+
+        const my_list = document.querySelector('ul')
+        const my_button = document.querySelector('button')
+        const my_input = document.querySelector('input')
+
+        my_button.addEventListener('click', () => {
+
+            const txt = my_input.value; //Get the text from input field
+            my_input.value = "" //clear the input field
+
+
+            const my_list_element = document.createElement('li') //create the list element
+            const text_node = document.createTextNode(txt) //create a text node 
+            my_list_element.append(text_node); // add the text to the list element
+
+            const my_delete_button = document.createElement('button') //create a button
+            const delete_text_node = document.createTextNode("x");// create node with text 'delete'
+
+            my_delete_button.append(delete_text_node) //add the text to the button
+            my_delete_button.style.marginLeft = "100px" // set the leftmargin of the button as 100px to maintain distance 
+
+            my_list_element.append(my_delete_button) // add the delete button to the list element
+
+            my_delete_button.addEventListener('click', () => { //add a event listener which deletes "my_list_element" when the button is clicked
+                my_list.removeChild(my_list_element)
+            })
+
+            my_list.appendChild(my_list_element) //add the list element to the list
+
+        })
+
+
+
+        my_button.addEventListener('mouseover', () => {
+
+            my_button.style.backgroundColor = 'yellow';
+
+
+        }
+        )
+
+
+
+        my_button.addEventListener('mouseout', () => {
+
+            my_button.style.backgroundColor = 'rgb(23, 227, 231)'
+        })
+
+    </script>
+
+</body>
+
+</html>
